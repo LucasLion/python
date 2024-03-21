@@ -1,23 +1,16 @@
 
-
-
-
-
-
 def NULL_not_found(object: any) -> int:
-    match object:
-        case int:
-            print(f"Zero: {type(object)}")
-        case float:
-            print(f"Cheese: {type(object)}")
-        case str:
-            print(f"Empty: {type(object)}")
-        case bool:
-            print(f"Fake: {type(object)}")
-        case None:
-            print(f"Nothing: {type(object)}")
-        case _:
-            print("Type not Found")
-
-    return 1;
-
+    if type(object) == type(None):
+        print(f"Nothing: None {type(object)}")
+    elif type(object) == type(float("Nan")):
+        print(f"Cheese: nan {type(object)}")
+    elif type(object) == type(0):
+        print(f"Zero: 0 {type(object)}")
+    elif type(object) == type('') and len(object) == 0:
+        print(f"Empty: {type(object)}")
+    elif type(object) == type(False):
+        print(f"Fake: False {type(object)}")
+    else:
+        print("Type not found")
+        return 1
+    return 0
