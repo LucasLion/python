@@ -1,6 +1,13 @@
 from sys import argv
 
 
+def whatis():
+    if int(argv[1]) % 2 == 0:
+        print("I'm Even.")
+    else:
+        print("I'm Odd.")
+
+
 def main():
 
     if len(argv) == 1:
@@ -15,11 +22,7 @@ def main():
     except AssertionError as msg:
         print(f"AssertionError: {msg}")
         return
-
-    if int(argv[1]) % 2 == 0:
-        print("I'm Even.")
-    else:
-        print("I'm Odd.")
+    whatis();
 
 
 if __name__ == "__main__":
