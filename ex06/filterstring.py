@@ -8,7 +8,13 @@ def filterstring(string, number):
     print(list(ft_filter(lambda x: len(x) > int(number), string)))
 
 def main():
+    """
+    Accepts only 2 arguments:
+    1. string
+    2. integer
 
+    Returns a list of words that are longer than the integer.
+    """
     try:
         assert len(sys.argv) == 3, "the arguments are bad"
 
