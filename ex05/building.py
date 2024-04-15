@@ -1,12 +1,14 @@
 from sys import argv
 
 def building(string: str):
+    numChars = 0
     upper_letters = 0
     lower_letters = 0
     punc_marks = 0
     spaces = 0
     digits = 0
     for i in range(0, len(string)):
+        numChars += 1
         if string[i] == " ":
             spaces += 1
         elif string[i].isalpha():
@@ -19,6 +21,7 @@ def building(string: str):
         else:
             punc_marks += 1
 
+    print(f"The text contains {numChars} characters")
     print(f"{upper_letters} upper letters")
     print(f"{lower_letters} lower letters")
     print(f"{punc_marks} punctuation marks")
