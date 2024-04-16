@@ -13,17 +13,16 @@ def clear_line():
     sys.stdout.flush()
 
 
-def ft_tqdm(lst: range) -> None:
+def ft_tqdm(lst: range):
     total_len = len(lst)
     terminal_width = int(shutil.get_terminal_size().columns)
     for i, elem in enumerate(lst, start=1):
-        progress = (i / total_len * terminal_width)
         percent = int(i / total_len * 100)
-        bar = "█" * int(progress)
-        empty = " " * (100 - percent)
-        if (percent % 1 == 0):
+        progress = int(i / total_len * (terminal_width - 10))
+        bar = "█" * progress
+        empty = " " * int(terminal_width - progress - 10)
+        if percent % 10 == 0:
             print(f"{percent}% [{bar}{empty}]", end="\r", flush=True)
-
         yield elem
     print(f"{percent}% [{bar}{empty}]")
     clear_line()
@@ -33,7 +32,7 @@ def main():
     hide_cursor()  # Masque le curseur au début du programme
     try:
         for _ in ft_tqdm(range(333)):
-            sleep(0.1)
+            sleep(0.005)
     finally:
         show_cursor()  # Rétablit le curseur à la fin du programme
 
