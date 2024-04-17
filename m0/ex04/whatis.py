@@ -22,7 +22,7 @@ def main():
     except AssertionError as msg:
         print(f"AssertionError: {msg}")
         return
-    whatis();
+    whatis()
 
 
 if __name__ == "__main__":

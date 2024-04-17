@@ -1,5 +1,6 @@
 from sys import argv
 
+
 def building(string: str):
     numChars = 0
     upper_letters = 0
@@ -42,8 +43,9 @@ def main():
         string = input("What is the text to count?\n")
     else:
         string = argv[1]
-    
+
     building(string)
 
+
 if __name__ == "__main__":
-    main();
+    main()

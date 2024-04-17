@@ -2,11 +2,14 @@ import shutil
 import sys
 from time import sleep
 
+
 def hide_cursor():
     sys.stdout.write("\033[?25l")  # Masque le curseur
 
+
 def show_cursor():
     sys.stdout.write("\033[?25h")  # Rétablit le curseur
+
 
 def clear_line():
     sys.stdout.write("\033[K")  # Efface la ligne actuelle dans la console
@@ -14,6 +17,9 @@ def clear_line():
 
 
 def ft_tqdm(lst: range):
+    '''
+    Affiche une barre de progression dans la console
+    '''
     total_len = len(lst)
     terminal_width = int(shutil.get_terminal_size().columns)
     for i, elem in enumerate(lst, start=1):
@@ -29,6 +35,9 @@ def ft_tqdm(lst: range):
 
 
 def main():
+    '''
+    Exemple d'utilisation de la barre de progression
+    '''
     hide_cursor()  # Masque le curseur au début du programme
     try:
         for _ in ft_tqdm(range(333)):
@@ -36,6 +45,6 @@ def main():
     finally:
         show_cursor()  # Rétablit le curseur à la fin du programme
 
+
 if __name__ == "__main__":
     main()
-

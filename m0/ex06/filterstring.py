@@ -1,11 +1,13 @@
 import sys
 from ft_filter import ft_filter
 
+
 def filterstring(string, number):
     # split string by spaces
     string = string.split()
     # lamba function for a string length to be lower than the number
     print(list(ft_filter(lambda x: len(x) > int(number), string)))
+
 
 def main():
     """

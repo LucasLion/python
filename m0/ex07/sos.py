@@ -1,5 +1,6 @@
 import sys
 
+
 NESTED_MORSE = {
   " ": "/ ",
   "A": ".- ", "B": "-...",
@@ -15,12 +16,14 @@ NESTED_MORSE = {
   "5": ".....", "6": "-....", "7": "--...", "8": "---..", "9": "....-"
 }
 
+
 def text_to_morse(text):
 
     morse = ""
     for char in text:
         morse += NESTED_MORSE[char.upper()]
     print(morse)
+
 
 def main():
     """
@@ -38,6 +41,7 @@ def main():
         sys.exit(1)
 
     text_to_morse(sys.argv[1])
+
 
 if __name__ == "__main__":
     main()
