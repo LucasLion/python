@@ -2,8 +2,8 @@ from PIL import Image
 
 def get_shape(path: str) -> tuple:
     img = Image.open(path)
-    pix = img.load()
-    print(pix[1, 1])
+    data = img.getdata()
+    print(list(data))
     return img.size
 
 def ft_load(path: str) -> list:
