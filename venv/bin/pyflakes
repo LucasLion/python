@@ -1,4 +1,4 @@
-#!/home/noil/code/python/venv/bin/python
+#!/home/llion/python/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

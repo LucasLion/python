@@ -1,19 +1,37 @@
+import os
+import numpy as np
 from PIL import Image
+from array import array
 
-def get_shape(path: str) -> tuple:
-    img = Image.open(path)
-    data = img.getdata()
-    print(list(data))
-    return img.size
 
-def ft_load(path: str) -> list:
-    get_shape(path)
-    img = Image.open(path)
-    pix = img.load()
-    print(f"The shape of image is : {img.size}")
-    print(pix[0, 0])
-    ar = []
-    print(img.size)
-    return ar
+def ft_load(path: str) -> array:
+    '''
+    Load an image from the specified path and return a Numpy array.
 
-ft_load("landscape.jpg")
+    Parameters:
+    path (str): Image
+
+    Returns:
+    array: NumPy array with pixels of the image
+    '''
+    try:
+        if not path.lower().endswith(('jpg', 'jpeg')):
+            raise AssertionError('formats allowed: JPG and JPEG')
+        if not os.path.exists(path):
+            raise AssertionError('File not found:', path)
+        with Image.open(path) as img:
+            img_array = np.array(img)
+            print("The shape of image is:", img_array.shape)
+            print(img_array)
+            return img_array
+    except AssertionError as e:
+        print(e)
+        return []
+
+
+def main():
+    ft_load("landscape.jpg")
+
+
+if __name__ == "__main__":
+    main()
