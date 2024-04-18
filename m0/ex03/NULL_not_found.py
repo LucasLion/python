@@ -3,7 +3,7 @@ def NULL_not_found(object: any) -> int:
         print(f"Nothing: None {type(object)}")
     elif isinstance(object, type(float("Nan"))):
         print(f"Cheese: nan {type(object)}")
-    elif isinstance(object, type(0)):
+    elif isinstance(object, type(int)):
         print(f"Zero: 0 {type(object)}")
     elif isinstance(object, type('')) and len(object) == 0:
         print(f"Empty: {type(object)}")
