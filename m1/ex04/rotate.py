@@ -9,9 +9,9 @@ def rotate(path: str):
     zoomed_image_array_horizontal = zoomed_image_array_transpose.squeeze()
     zoomed_image_array_img = Image.fromarray(zoomed_image_array_horizontal)
     zoomed_image_array_img.save('zoom.jpg')
-    print("The shape of the image is", 
-          zoomed_image_array.shape, 
-          "or", 
+    print("The shape of the image is",
+          zoomed_image_array.shape,
+          "or",
           zoomed_image_array.shape[:2])
     print(zoomed_image_array)
     print("New shape after Transpose:",

@@ -1,24 +1,25 @@
 
 
-def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int | float]:
+def give_bmi(h: list[int | float],
+             w: list[int | float]) -> list[int | float]:
 
     try:
-        if len(height) != len(weight):
-            raise ValueError("Length of height and weight should be same")
-        if len(height) == 0 or len(weight) == 0:
-            raise ValueError("Height and weight list should not be empty")
-        for i in range(len(height)):
-            if type(height[i]) not in [int, float] or type(weight[i]) not in [int, float]:
-                raise ValueError("Height and weight should be integer or float")
-            if height[i] <= 0 or weight[i] <= 0:
-                raise ValueError("Height and weight should be greater than 0")
+        if len(h) != len(w):
+            raise ValueError("Length of h and w should be same")
+        if len(h) == 0 or len(w) == 0:
+            raise ValueError("Height and w list should not be empty")
+        for i in range(len(h)):
+            if not all(isinstance(val, (int, float)) for val in [h[i], w[i]]):
+                raise ValueError("Height and w should be integer or float")
+            if h[i] <= 0 or w[i] <= 0:
+                raise ValueError("Height and w should be greater than 0")
     except ValueError as e:
         print(e)
         return []
 
     bmi_list = []
-    for i in range(len(height)):
-        bmi_list.append(weight[i] / (height[i] ** 2))
+    for i in range(len(h)):
+        bmi_list.append(w[i] / (h[i] ** 2))
     return bmi_list
 
 

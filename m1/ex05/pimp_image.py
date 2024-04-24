@@ -28,7 +28,7 @@ def ft_red(array) -> array:
                 if k == 0:
                     pass
                 elif k == 1 or k == 2:
-                    new_array[i][j][k] =  0
+                    new_array[i][j][k] = 0
     image = Image.fromarray(new_array)
     image.save("red.jpg")
     return new_array
@@ -76,7 +76,7 @@ def ft_grey(array) -> array:
     grey_array = np.empty_like(array, dtype=np.uint8)
     for i in range(len(new_array)):
         for j in range(len(new_array[i])):
-            grey = sum(new_array[i][j]) // 3 
+            grey = sum(new_array[i][j]) // 3
             grey_array[i][j] = grey
     image = Image.fromarray(grey_array)
     image.save("grey.jpg")
