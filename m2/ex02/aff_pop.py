@@ -4,6 +4,20 @@ import matplotlib.pyplot as plt
 from load_csv import load
 
 
+def clean_population(population_str):
+    multiplier = 1
+    if population_str.endswith('M'):
+        multiplier = 1000000
+        population_str = population_str.replace('M', '')
+    elif population_str.endswith('B'):
+        multiplier = 1000000000
+        population_str = population_str.replace('B', '')
+    elif population_str.endswith('k'):
+        multiplier = 1000
+        population_str = population_str.replace('k', '')
+    return int(float(population_str) * multiplier)
+
+
 def main(path: str):
     try:
         data = load(path)
@@ -18,8 +32,9 @@ def main(path: str):
             value_name='Population',
         )
         data_melted['year'] = data_melted['year'].astype(int)
+        data_melted['Population'] = data_melted['Population'].apply(clean_population)
         data_selected = data_melted[data_melted['country'].isin(['France', 'Belgium'])]
-        sns.relplot(
+        g = sns.relplot(
             data=data_selected,
             x="year",
             y="Population",
@@ -28,15 +43,11 @@ def main(path: str):
             height=4,
             aspect=2,
         )
-        sns.axes_style(
-            {
-                'axes.grid': True,
-                'text.color': 'green',
-            }
-        )
-        plt.title('Population Projections')
-        plt.xlim(1800, 2050)
+        g.set_axis_labels("Annee,", "Population")
+        g.set(title='Projections de Population', xlim=(1800, 2050))
         plt.show()
+        print(data_selected['Population'])
+
     except FileNotFoundError as e:
         print(f"Error: {str(e)}")
     except ValueError as e:
