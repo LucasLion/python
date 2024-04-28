@@ -13,6 +13,7 @@ print("---")
 Lyanna = Stark("Lyanna", False)
 print(Lyanna.__dict__)
 
+
 '''
 Expected output: (docstrings can be different)
 $> python tester.py
