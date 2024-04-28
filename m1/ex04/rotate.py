@@ -1,12 +1,16 @@
 from load_image import ft_load
 from PIL import Image
+import numpy as np
 
 
 def rotate(path: str):
     array_image = ft_load(path)
     zoomed_image_array = array_image[200:600, 450:850, :1]
-    zoomed_image_array_transpose = zoomed_image_array.transpose((1, 0, 2))
-    zoomed_image_array_horizontal = zoomed_image_array_transpose.squeeze()
+    img = np.zeros((zoomed_image_array.shape[1], zoomed_image_array.shape[0]), dtype=np.uint8)
+    for x in range(img.shape[1]):
+        for y in range(img.shape[0]):
+            img[x, y] = zoomed_image_array[y, x]
+    zoomed_image_array_horizontal = img.squeeze()
     zoomed_image_array_img = Image.fromarray(zoomed_image_array_horizontal)
     zoomed_image_array_img.save('zoom.jpg')
     print("The shape of the image is",
@@ -15,7 +19,7 @@ def rotate(path: str):
           zoomed_image_array.shape[:2])
     print(zoomed_image_array)
     print("New shape after Transpose:",
-          zoomed_image_array_transpose.shape[:2])
+          img.shape[:2])
     print(zoomed_image_array_horizontal)
 
 

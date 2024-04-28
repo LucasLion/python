@@ -14,12 +14,14 @@ def main(path1: str, path2: str, year: str = '1900'):
 
         pib_year = pib[year]
         life_year = life[year]
-        sns.relplot(
+        g = sns.scatterplot(
             x=pib_year,
             y=life_year,
-            height=4,
-            aspect=2,
         )
+        g.set(xscale="log")
+        g.set_xlim(300, 11000)
+        g.set_xticks([300, 1000, 10000])
+        g.set_xticklabels(['300', '1k', '10k'])
         plt.xlabel("PIB par habitant")
         plt.ylabel("Esperance de vie")
         plt.title(f"Esperance de vie en fonction du PIB par habitant en {year}")

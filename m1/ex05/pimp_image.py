@@ -73,10 +73,12 @@ def ft_grey(array) -> array:
     Turn the color of the image to grey.
     '''
     new_array = array.copy()
-    grey_array = np.empty_like(array, dtype=np.uint8)
+    grey_array = np.zeros((len(array), len(array[0])), dtype=np.uint8)
+
+    print(grey_array.shape)
     for i in range(len(new_array)):
         for j in range(len(new_array[i])):
-            grey = sum(new_array[i][j]) // 3
+            grey = int(new_array[i][j].mean())
             grey_array[i][j] = grey
     image = Image.fromarray(grey_array)
     image.save("grey.jpg")

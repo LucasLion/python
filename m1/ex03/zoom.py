@@ -6,16 +6,18 @@ from PIL import Image
 def zoom(path, x, y, width, height):
     img_array = ft_load(path)
     zoomed_image_array = img_array[y:height, x:width, :1]
+    zoomed_image_array_img = Image.fromarray(zoomed_image_array.squeeze())
     print('-----------')
     print(zoomed_image_array)
     print('-----------')
     print("New shape after slicing:",
           zoomed_image_array.shape,
           "or",
-          zoomed_image_array.shape[:2])
+    #      zoomed_image_array.shape[:2])
+          zoomed_image_array_img.size
+          )
 
     print(zoomed_image_array)
-    zoomed_image_array_img = Image.fromarray(zoomed_image_array.squeeze())
     zoomed_image_array_img.save('zoom.jpg')
     print('Nouvelle image enregistree sous zoom.jpg')
 

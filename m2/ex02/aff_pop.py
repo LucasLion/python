@@ -28,25 +28,25 @@ def main(path: str):
         data_melted = pd.melt(
             data,
             id_vars=['country'],
-            var_name='year',
+            var_name='Year',
             value_name='Population',
         )
-        data_melted['year'] = data_melted['year'].astype(int)
+        data_melted['Year'] = data_melted['Year'].astype(int)
         data_melted['Population'] = data_melted['Population'].apply(clean_population)
-        data_selected = data_melted[data_melted['country'].isin(['France', 'Belgium'])]
-        g = sns.relplot(
+        data_selected = data_melted[(data_melted['Year'] <= 2050) & (data_melted['country'].isin(['France', 'Belgium']))]
+        g = sns.lineplot(
             data=data_selected,
-            x="year",
+            x="Year",
             y="Population",
             hue="country",
-            kind="line",
-            height=4,
-            aspect=2,
         )
-        g.set_axis_labels("Annee,", "Population")
+        #g.set_axis_labels("Annee,", "Population")
         g.set(title='Projections de Population', xlim=(1800, 2050))
+        g.legend(loc='lower right')
+        pop_legend = ['20M', '40M', '60M']
+        plt.yticks([20000000, 40000000, 60000000], pop_legend)
+        plt.xlim(1795, 2060)
         plt.show()
-        print(data_selected['Population'])
 
     except FileNotFoundError as e:
         print(f"Error: {str(e)}")
